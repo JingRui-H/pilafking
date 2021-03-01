@@ -5,8 +5,64 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>cn.pilafking</groupId>
-    <artifactId>pilafking</artifactId><packaging>pom</packaging>
-    <version>1.0</version><modules><module>pilaf-common</module><module>pilaf-logic</module><module>pilaf-gateway</module><module>pilaf-register</module><module>pilaf-auth</module><module>pilaf-upms</module><module>pilaf-visual</module></modules>
+    <artifactId>pilafking</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0</version>
 
-    
+    <properties>
+        <spring-boot.version>2.3.3.RELEASE</spring-boot.version>
+    </properties>
+
+
+    <dependencies>
+        <!--监控-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <!--Lombok-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <!--测试依赖-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <!--配置文件处理器: 配置文件书写时会有提示-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+    </dependencies>
+
+
+    <modules>
+        <module>pilaf-common</module>
+        <module>pilaf-logic</module>
+        <module>pilaf-gateway</module>
+        <module>pilaf-register</module>
+        <module>pilaf-auth</module>
+        <module>pilaf-upms</module>
+        <module>pilaf-visual</module>
+    </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <!--spring boot 公共版本定义-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+
 </project>
